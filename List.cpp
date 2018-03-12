@@ -12,8 +12,7 @@ class List::Node //self-referential Node class
 	   Node* link = nullptr;
 	   //link is a data member which is a pointer 
 	   //to an object of the same type (i.e. Node)
-	
-	};//end Node class definition (can only be seen by the List class)
+};//end Node class definition (can only be seen by the List class)
 
 
 List::~List()
@@ -90,6 +89,40 @@ void List::remove(int k)
 	delete delPtr;
 	num_elements--;
 	}
+
+//Implementations of missing operations
+void List::clear()
+{
+	Node* delPtr;
 	
-	//Implementations of missing operations
+	while(frontPtr != nullptr)
+	{
+		delPtr = frontPtr;
+		frontPtr = delPtr->link;
+		delete delPtr;
+		num_elements--;
+	}
+}
+
+int List::getElem(int k)
+{
+	if (k < 1 or k > num_elements +1) //if the location is invalid
+		throw out_of_range("List::getElem(" +to_string(k)+") failed. (valid indices are 1 to "+to_string(num_elements+1)+")");//throw an "out_of_range" exception
+	
+	if(k==1)
+	{
+		return frontPtr->data;		
+	}
+	else
+	{
+		Node* iPtr = nullptr;
+		int i=1;
+		
+		for(iPtr = frontPtr; i < k; i++)
+			iPtr = iPtr->link;
+			
+		return iPtr->data;		
+	}
+}
+
 	
