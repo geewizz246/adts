@@ -93,15 +93,8 @@ void List::remove(int k)
 //Implementations of missing operations
 void List::clear()
 {
-	Node* delPtr;
-	
 	while(frontPtr != nullptr)
-	{
-		delPtr = frontPtr;
-		frontPtr = delPtr->link;
-		delete delPtr;
-		num_elements--;
-	}
+		remove(1);
 }
 
 int List::getElem(int k)
