@@ -1,4 +1,3 @@
-
 //Implementing a Stack ADT With a List ADT
 
 #ifndef STACK_H

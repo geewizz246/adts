@@ -33,3 +33,16 @@ int main()
     return 0;
         
 }
+/*
+int main()
+{
+	Stack stk;
+	
+	cout << "Size of stack = " << stk.size() << endl;
+	stk.push(1);
+	stk.push(2);
+	cout << "Top of stack = " << stk.top() << endl;
+	cout << "Size of stack = " << stk.size() << endl;
+	return 0;
+}
+*/
