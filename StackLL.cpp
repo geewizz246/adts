@@ -1,7 +1,3 @@
-//Change so that data members are inserted at the front of the list
-//and popped from the front of the list
-
-
 #include "StackLL.h"
 #include <iostream>
 #include <stdexcept>//used to be able to "throw" exceptions
@@ -34,22 +30,8 @@ void Stack::push(int val)
 {
 	Node* newPtr = new Node{val};
 	
-	if(num_elements == 0)
-	{
-		newPtr->link = frontPtr;
-		frontPtr = newPtr;
-	}
-	else
-	{
-		Node* iPtr = nullptr;
-		int i=1;
-		
-		for(iPtr = frontPtr; i < num_elements; i++)
-			iPtr = iPtr->link;
-		
-		newPtr->link = iPtr->link;
-		iPtr->link = newPtr;
-	}
+	newPtr->link = frontPtr;
+	frontPtr = newPtr;
 	
 	num_elements++;
 }
@@ -58,22 +40,8 @@ void Stack::pop()
 {
 	Node* delPtr;
 	
-	if(num_elements == 1)
-	{
-		delPtr = frontPtr;
-		frontPtr = frontPtr->link;
-	}
-	else
-	{
-		Node* iPtr = nullptr;
-		int i=1;
-		
-		for(iPtr = frontPtr; i < num_elements-1; i++)
-			iPtr = iPtr->link;
-
-		delPtr = iPtr->link;
-		iPtr->link = delPtr->link;
-	}
+	delPtr = frontPtr;
+	frontPtr = frontPtr->link;
 	
 	delete delPtr;
 	num_elements--;
@@ -87,18 +55,5 @@ void Stack::clear()
 
 int Stack::top()
 {
-	if(num_elements == 1)
-	{
-		return frontPtr->data;		
-	}
-	else
-	{
-		Node* iPtr = nullptr;
-		int i=1;
-		
-		for(iPtr = frontPtr; i < num_elements; i++)
-			iPtr = iPtr->link;
-			
-		return iPtr->data;
-	}
+	return frontPtr->data;
 }
