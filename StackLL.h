@@ -9,7 +9,7 @@ private:
 
    class Node;
 
-   Node* frontPtr = nullptr;
+   Node* topPtr = nullptr;
    int num_elements = 0;
 
 public:

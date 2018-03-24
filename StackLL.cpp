@@ -30,8 +30,8 @@ void Stack::push(int val)
 {
 	Node* newPtr = new Node{val};
 	
-	newPtr->link = frontPtr;
-	frontPtr = newPtr;
+	newPtr->link = topPtr;
+	topPtr = newPtr;
 	
 	num_elements++;
 }
@@ -40,8 +40,8 @@ void Stack::pop()
 {
 	Node* delPtr;
 	
-	delPtr = frontPtr;
-	frontPtr = frontPtr->link;
+	delPtr = topPtr;
+	topPtr = topPtr->link;
 	
 	delete delPtr;
 	num_elements--;
@@ -49,11 +49,11 @@ void Stack::pop()
 
 void Stack::clear()
 {
-	while(frontPtr != nullptr)
+	while(topPtr != nullptr)
 		pop();
 }
 
 int Stack::top()
 {
-	return frontPtr->data;
+	return topPtr->data;
 }
